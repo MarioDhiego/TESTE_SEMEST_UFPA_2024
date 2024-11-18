@@ -1,0 +1,42 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "DA FAXINA DE DADOS A RELATÓRIOS DINÂMICOS"
+  subtitle: "SEMEST UFPA 2024"
+  author:
+    - name: "**Mário Diego Rocha Valente**"
+      id: md
+      orcid: 0000-0001-7262-3336
+      url: mario.valente@detran.pa.gov.br
+      email: mario.valente@detran.pa.gov.br
+      corresponding: true
+      affiliation:
+        - Analista de Trânsito
+        - DETRAN-PA
+  page-footer:
+    left: |
+      Was Written by (VALENTE - 2024).
+    right: |
+      UFPA 2024.  
+  search: true
+  repo-url: https://github.com/MarioDhiego/SEMEST_UFPA_2024
+  downloads: [pdf, docx]
+  sharing: [twitter, facebook]
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+
