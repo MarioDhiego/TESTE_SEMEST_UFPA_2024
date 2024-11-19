@@ -1,9 +1,106 @@
-# Introduction
 
-This is a book created from markdown and executable code.
+```{=html}
+<style>
+body{text-align: justify}
+</style>
+```
 
-See @knuth84 for additional discussion of literate programming.
+:::: progress
+::: {.progress-bar style="width: 100%;"}
+:::
+::::
+
+# Análise Exploratória de Dados
+
+Em estatística, a análise exploratória de dados (AED) é uma abordagem à análise de conjuntos de dados de modo a resumir suas características principais, frequentemente com métodos visuais. Um modelo estatístico pode ou não ser usado, mas primariamente a AED tem como objetivo observar o que os dados podem nos dizer além da modelagem formal ou do processo de teste de hipóteses.
+
+:::: progress
+::: {.progress-bar style="width: 100%;"}
+:::
+::::
+
+
+# Etapas Operacionais
+## Diretório de Trabalho no R
+
+Função básica para definir o diretório de Trabalho.
+
+
+```{r dir1, message=FALSE, warning=FALSE}
+
+setwd("C:/Users/Labest III/OneDrive - Universidade Federal do Pará - UFPA/Documentos/SEMEST_UFPA_2024")
+
+```
+
+
+## Leitura de Base de Dados
+### Base de Dados .xlsx
+
+```{r, base1}
+
+library(readxl)
+
+mercado <- read_excel('mercado.xlsx')
+```
+
+
+### Base de Dados .csv
+
+```{r, base2}
+
+library(readr)
+# Dados Separados por Ponto e Vírgula (;)
+Vendas_A = read.csv2("vendas.csv")
+
+# Dados separados por Vírgula (,)
+Vendas_B = read.csv("vendas1.csv")
+
+```
+
 
 ```{r}
-1 + 1
+
+library(dplyr)
+
+
 ```
+
+
+
+```{r dplyr1a, message=FALSE, warning=FALSE}
+
+library(dplyr)
+
+
+Vendas_A %>% 
+  select(filial, valor_compra, n_itens) %>% 
+  filter(filial == "B") %>%
+  arrange(valor_compra) %>% 
+  mutate(VM = valor_compra/n_itens) %>% 
+  arrange(VM)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:::: progress
+::: {.progress-bar style="width: 100%;"}
+:::
+::::
+
+  

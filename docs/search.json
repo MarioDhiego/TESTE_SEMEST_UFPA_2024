@@ -4,14 +4,21 @@
     "href": "index.html",
     "title": "DA FAXINA DE DADOS A RELATÓRIOS DINÂMICOS",
     "section": "",
-    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2"
+    "text": "Prefácio\nSerá Ministrado um Curso em Linguagem de Programação R, utilizando como base o Pacote Quarto.\nAo longo da oficina será apresentado os principais pacotes de Visualização de dados, tais como: ggplot2 e Plotly."
   },
   {
     "objectID": "intro.html",
     "href": "intro.html",
-    "title": "1  Introduction",
+    "title": "1  Análise Exploratória de Dados",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "text": "2 Etapas Operacionais"
+  },
+  {
+    "objectID": "intro.html#diretório-de-trabalho-no-r",
+    "href": "intro.html#diretório-de-trabalho-no-r",
+    "title": "1  Análise Exploratória de Dados",
+    "section": "2.1 Diretório de Trabalho no R",
+    "text": "2.1 Diretório de Trabalho no R"
   },
   {
     "objectID": "summary.html",
@@ -19,12 +26,5 @@
     "title": "2  Summary",
     "section": "",
     "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
-    "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
   }
 ]
