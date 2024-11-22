@@ -11,14 +11,21 @@
     "href": "intro.html",
     "title": "1  Análise Exploratória de Dados",
     "section": "",
-    "text": "2 Etapas Operacionais"
+    "text": "2 Etapas Operacionais\n\\[  Y_{1} = \\alpha_{1} + \\beta_{1}X_{1} + \\beta_{2}X_{2} + \\beta_{3}X_{3} + \\epsilon_{i}   \\]"
   },
   {
     "objectID": "intro.html#diretório-de-trabalho-no-r",
     "href": "intro.html#diretório-de-trabalho-no-r",
     "title": "1  Análise Exploratória de Dados",
     "section": "2.1 Diretório de Trabalho no R",
-    "text": "2.1 Diretório de Trabalho no R"
+    "text": "2.1 Diretório de Trabalho no R\nFunção básica para definir o diretório de Trabalho.\n\nsetwd(\"C:/Users/Labest III/OneDrive - Universidade Federal do Pará - UFPA/Documentos/SEMEST_UFPA_2024\")"
+  },
+  {
+    "objectID": "intro.html#leitura-de-base-de-dados",
+    "href": "intro.html#leitura-de-base-de-dados",
+    "title": "1  Análise Exploratória de Dados",
+    "section": "2.2 Leitura de Base de Dados",
+    "text": "2.2 Leitura de Base de Dados\n\n2.2.1 Base de Dados .xlsx\n\nlibrary(DT)\nlibrary(readxl)\nlibrary(ggplot2)\nlibrary(plotly)\n\n\nAnexando pacote: 'plotly'\n\n\nO seguinte objeto é mascarado por 'package:ggplot2':\n\n    last_plot\n\n\nO seguinte objeto é mascarado por 'package:stats':\n\n    filter\n\n\nO seguinte objeto é mascarado por 'package:graphics':\n\n    layout\n\nmercado &lt;- read_excel('mercado.xlsx')\nmercado2 &lt;- read_excel('mercado2.xlsx')\n\ngrafico1 &lt;- ggplot(mercado2, \n       aes(x = IDADE, \n           y = SALARIO)) +\n  geom_point(\n    size = 2.5,\n    col = \"blue\",\n    fill = \"white\"\n  ) +\n  geom_smooth(method = \"lm\") +\n  theme_bw() +\n    labs(x=\"IDADE\",\n         y=\"SALÁRIO\",\n         title=\"Diagrama de Dispersão sem Outliers\",\n         subtitle = \"Renda Salarial\")\n\nggplotly(grafico1)\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\nlibrary(DT)\n\ndatatable(mercado2,\n          editable = 'cell',\n          caption = 'Tabela 1. Base de Dados sobre Servicos',\n           colnames = c(\"ID\",\n                        \"Educação\",\n                        \"Cargo\",\n                        \"Via\",\n                        \"Idade\",\n                        \"Tempo\",\n                        \"Remuneração\"),\n            filter = \"top\", \n            plugins='natural',\n            extensions='Buttons',\n            options=list(dom='Blfrtip',\n            buttons=c('csv','excel','pdf'),\n                  engthMenu=list(c(5,50,100,250,-1)), c(5,50,100,250,\"All\"),\n                         pageLength = 5, \n                         autoWidth = TRUE,\n                         scrollX = TRUE),\n          )\n\n\n\n\n\n\n\nlibrary(readxl)\nlibrary(ggplot2)\nlibrary(ggpmisc)\n\nCarregando pacotes exigidos: ggpp\n\n\nRegistered S3 methods overwritten by 'ggpp':\n  method                  from   \n  heightDetails.titleGrob ggplot2\n  widthDetails.titleGrob  ggplot2\n\n\n\nAnexando pacote: 'ggpp'\n\n\nO seguinte objeto é mascarado por 'package:ggplot2':\n\n    annotate\n\nmercado2 &lt;- read_excel('mercado2.xlsx')\ngrafico2 &lt;- ggplot(mercado2, aes(x = TEMPOCASA, \n                     y = SALARIO))+\n  geom_point() +\n  geom_smooth(method = \"lm\",\n              color = \"red\") +\n stat_poly_eq(aes(label = paste(..eq.label.., ..rr.label.., \n                                sep = \"~~~\")), \n               formula = y ~ x, \n               parse = TRUE, \n               color = \"blue\")\n\n\n\n2.2.2 Base de Dados .csv\n\nlibrary(readr)\n# Dados Separados por Ponto e Vírgula (;)\nVendas_A = read.csv2(\"vendas.csv\")\n\n# Dados separados por Vírgula (,)\nVendas_B = read.csv(\"vendas1.csv\")\n\n\nlibrary(dplyr)\n\n\nAnexando pacote: 'dplyr'\n\n\nOs seguintes objetos são mascarados por 'package:stats':\n\n    filter, lag\n\n\nOs seguintes objetos são mascarados por 'package:base':\n\n    intersect, setdiff, setequal, union\n\n\n\nlibrary(dplyr)\n\n\nVendas_A %&gt;% \n  select(filial, valor_compra, n_itens) %&gt;% \n  filter(filial == \"B\") %&gt;%\n  arrange(valor_compra) %&gt;% \n  mutate(VM = valor_compra/n_itens) %&gt;% \n  arrange(VM)\n\n   filial valor_compra n_itens        VM\n1       B        30.50      20   1.52500\n2       B        61.69      31   1.99000\n3       B       220.00     100   2.20000\n4       B        93.20      40   2.33000\n5       B        70.00      14   5.00000\n6       B        97.50      13   7.50000\n7       B       271.26      22  12.33000\n8       B       247.67      17  14.56882\n9       B       500.80      30  16.69333\n10      B       856.00      20  42.80000\n11      B        99.00       1  99.00000\n12      B       500.00       2 250.00000"
   },
   {
     "objectID": "summary.html",

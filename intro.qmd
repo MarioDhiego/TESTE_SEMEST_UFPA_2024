@@ -1,30 +1,27 @@
-
 ```{=html}
 <style>
 body{text-align: justify}
 </style>
 ```
-
-:::: progress
+::: progress
 ::: {.progress-bar style="width: 100%;"}
 :::
-::::
+:::
 
 # Análise Exploratória de Dados
 
 Em estatística, a análise exploratória de dados (AED) é uma abordagem à análise de conjuntos de dados de modo a resumir suas características principais, frequentemente com métodos visuais. Um modelo estatístico pode ou não ser usado, mas primariamente a AED tem como objetivo observar o que os dados podem nos dizer além da modelagem formal ou do processo de teste de hipóteses.
 
-:::: progress
+::: progress
 ::: {.progress-bar style="width: 100%;"}
 :::
-::::
-
+:::
 
 # Etapas Operacionais
+
 ## Diretório de Trabalho no R
 
 Função básica para definir o diretório de Trabalho.
-
 
 ```{r dir1, message=FALSE, warning=FALSE}
 
@@ -32,17 +29,97 @@ setwd("C:/Users/Labest III/OneDrive - Universidade Federal do Pará - UFPA/Docum
 
 ```
 
-
 ## Leitura de Base de Dados
+
 ### Base de Dados .xlsx
 
 ```{r, base1}
 
+library(DT)
 library(readxl)
+library(ggplot2)
+library(plotly)
 
 mercado <- read_excel('mercado.xlsx')
+mercado2 <- read_excel('mercado2.xlsx')
+
+grafico1 <- ggplot(mercado2, 
+       aes(x = IDADE, 
+           y = SALARIO)) +
+  geom_point(
+    size = 2.5,
+    col = "blue",
+    fill = "white"
+  ) +
+  geom_smooth(method = "lm") +
+  theme_bw() +
+    labs(x="IDADE",
+         y="SALÁRIO",
+         title="Diagrama de Dispersão sem Outliers",
+         subtitle = "Renda Salarial")
+
+ggplotly(grafico1)
+
+
+
+
 ```
 
+
+
+```{r}
+library(DT)
+
+datatable(mercado2,
+          editable = 'cell',
+          caption = 'Tabela 1. Base de Dados sobre Servicos',
+           colnames = c("ID",
+                        "Educação",
+                        "Cargo",
+                        "Via",
+                        "Idade",
+                        "Tempo",
+                        "Remuneração"),
+            filter = "top", 
+            plugins='natural',
+            extensions='Buttons',
+            options=list(dom='Blfrtip',
+            buttons=c('csv','excel','pdf'),
+                  engthMenu=list(c(5,50,100,250,-1)), c(5,50,100,250,"All"),
+                         pageLength = 5, 
+                         autoWidth = TRUE,
+                         scrollX = TRUE),
+          )
+```
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+library(readxl)
+library(ggplot2)
+library(ggpmisc)
+
+mercado2 <- read_excel('mercado2.xlsx')
+grafico2 <- ggplot(mercado2, aes(x = TEMPOCASA, 
+                     y = SALARIO))+
+  geom_point() +
+  geom_smooth(method = "lm",
+              color = "red") +
+ stat_poly_eq(aes(label = paste(..eq.label.., ..rr.label.., 
+                                sep = "~~~")), 
+               formula = y ~ x, 
+               parse = TRUE, 
+               color = "blue")
+```
 
 ### Base de Dados .csv
 
@@ -57,15 +134,12 @@ Vendas_B = read.csv("vendas1.csv")
 
 ```
 
-
 ```{r}
 
 library(dplyr)
 
 
 ```
-
-
 
 ```{r dplyr1a, message=FALSE, warning=FALSE}
 
@@ -80,27 +154,24 @@ Vendas_A %>%
   arrange(VM)
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:::: progress
+::: progress
 ::: {.progress-bar style="width: 100%;"}
 :::
-::::
+:::
 
-  
+# Analise Exploratoria de Dados
+
+|                                    Dplyr                                    |       ggplot2       |              Shiny              |
+|:-------------------------------------:|:--------------:|:---------------:|
+| [![Pacote Dplyr](www/dplyr.png){width="240"}](https://dplyr.tidyverse.org/) | ![](www/ggplo2.png) | ![](www/Shiny.png){width="240"} |
+
+: Ecosistema Tidyverse
+
+# Fórmulas em Latex
+
+$$  Y_{1} = \alpha_{1} + \beta_{1}X_{1} + \beta_{2}X_{2} + \beta_{3}X_{3} + \epsilon_{i}   $$
+
+::: progress
+::: {.progress-bar style="width: 100%;"}
+:::
+:::

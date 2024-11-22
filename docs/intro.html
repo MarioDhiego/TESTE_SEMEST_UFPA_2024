@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -62,6 +96,36 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="site_libs/datatables-binding-0.33/datatables.js"></script>
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="site_libs/jszip-1.13.6/jszip.min.js"></script>
+<script src="site_libs/pdfmake-1.13.6/pdfmake.js"></script>
+<script src="site_libs/pdfmake-1.13.6/vfs_fonts.js"></script>
+<link href="site_libs/dt-ext-buttons-1.13.6/css/buttons.dataTables.min.css" rel="stylesheet">
+<script src="site_libs/dt-ext-buttons-1.13.6/js/dataTables.buttons.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.13.6/js/buttons.html5.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.13.6/js/buttons.colVis.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.13.6/js/buttons.print.min.js"></script>
+<link href="site_libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
+<script src="site_libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="site_libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
+<script src="site_libs/selectize-0.12.0/selectize.min.js"></script>
+<script src="site_libs/dt-plugin-natural-1.13.6/source.min.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -173,7 +237,14 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#etapas-operacionais" id="toc-etapas-operacionais" class="nav-link active" data-scroll-target="#etapas-operacionais"><span class="header-section-number">2</span> Etapas Operacionais</a>
   <ul class="collapse">
   <li><a href="#diretório-de-trabalho-no-r" id="toc-diretório-de-trabalho-no-r" class="nav-link" data-scroll-target="#diretório-de-trabalho-no-r"><span class="header-section-number">2.1</span> Diretório de Trabalho no R</a></li>
+  <li><a href="#leitura-de-base-de-dados" id="toc-leitura-de-base-de-dados" class="nav-link" data-scroll-target="#leitura-de-base-de-dados"><span class="header-section-number">2.2</span> Leitura de Base de Dados</a>
+  <ul class="collapse">
+  <li><a href="#base-de-dados-.xlsx" id="toc-base-de-dados-.xlsx" class="nav-link" data-scroll-target="#base-de-dados-.xlsx"><span class="header-section-number">2.2.1</span> Base de Dados .xlsx</a></li>
+  <li><a href="#base-de-dados-.csv" id="toc-base-de-dados-.csv" class="nav-link" data-scroll-target="#base-de-dados-.csv"><span class="header-section-number">2.2.2</span> Base de Dados .csv</a></li>
   </ul></li>
+  </ul></li>
+  <li><a href="#analise-exploratoria-de-dados" id="toc-analise-exploratoria-de-dados" class="nav-link" data-scroll-target="#analise-exploratoria-de-dados"><span class="header-section-number">3</span> Analise Exploratoria de Dados</a></li>
+  <li><a href="#fórmulas-em-latex" id="toc-fórmulas-em-latex" class="nav-link" data-scroll-target="#fórmulas-em-latex"><span class="header-section-number">4</span> Fórmulas em Latex</a></li>
   </ul>
 </nav>
     </div>
@@ -215,6 +286,214 @@ body{text-align: justify}
 <h1 data-number="2"><span class="header-section-number">2</span> Etapas Operacionais</h1>
 <section id="diretório-de-trabalho-no-r" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="diretório-de-trabalho-no-r"><span class="header-section-number">2.1</span> Diretório de Trabalho no R</h2>
+<p>Função básica para definir o diretório de Trabalho.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/Users/Labest III/OneDrive - Universidade Federal do Pará - UFPA/Documentos/SEMEST_UFPA_2024"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="leitura-de-base-de-dados" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="leitura-de-base-de-dados"><span class="header-section-number">2.2</span> Leitura de Base de Dados</h2>
+<section id="base-de-dados-.xlsx" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="base-de-dados-.xlsx"><span class="header-section-number">2.2.1</span> Base de Dados .xlsx</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Anexando pacote: 'plotly'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>O seguinte objeto é mascarado por 'package:ggplot2':
+
+    last_plot</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>O seguinte objeto é mascarado por 'package:stats':
+
+    filter</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>O seguinte objeto é mascarado por 'package:graphics':
+
+    layout</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mercado <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">'mercado.xlsx'</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>mercado2 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">'mercado2.xlsx'</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>grafico1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mercado2, </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> IDADE, </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> SALARIO)) <span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">2.5</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">"blue"</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"white"</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"IDADE"</span>,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">y=</span><span class="st">"SALÁRIO"</span>,</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">title=</span><span class="st">"Diagrama de Dispersão sem Outliers"</span>,</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="st">"Renda Salarial"</span>)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(grafico1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-7f3e9e1d712e8327fed7" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-7f3e9e1d712e8327fed7">{"x":{"data":[{"x":[30,32,33,34,36,37,37,37,38,38,39,39,40,40,40,40,42,43,43,43,44,44,45,45,45,45,45,45,46,46,46,46,46,47,47,47,47,48,48,49,49,50,50,50,50,50,51,51,51,52,52,52,52,53,54,55,55,55,55,56,56,57,58,58,59,60,60,60,62,63,64,65,65,65,65,67,69,70,72],"y":[4279.5,4575.3999999999996,4735.6000000000004,4863.1000000000004,5355.8000000000002,4567.1000000000004,4434.6000000000004,4894.3000000000002,5476.3000000000002,5624.6999999999998,5309.8000000000002,5324.5,4711,4817.1000000000004,5883.6999999999998,5598.6000000000004,5082.1000000000004,4607.6000000000004,4703.8000000000002,5747.8999999999996,4715.8000000000002,4872.6999999999998,4186.6000000000004,4540.1000000000004,4894.3000000000002,4894.3000000000002,5815.8999999999996,6051.3000000000002,4667.5,4817.1000000000004,5309.8000000000002,4918,5316.3000000000002,4894.3000000000002,5131,5905.1999999999998,6120.1000000000004,4791.8999999999996,6235.1000000000004,5254.3999999999996,5131.1999999999998,5087.3999999999996,5136.8999999999996,5143.1999999999998,5905.1999999999998,6051.3000000000002,5069.3999999999996,6235.1000000000004,5905.1999999999998,5501.5,5905.1999999999998,6556.3999999999996,6124.1999999999998,6197.1000000000004,6796.8999999999996,5951.6999999999998,6087.1000000000004,5686.5,6269.8000000000002,6583.5,6583.8999999999996,7481.1999999999998,5660.3999999999996,6583.8999999999996,6269.8000000000002,6415.8000000000002,6920.5,7088.8000000000002,6920.5,7481.1999999999998,6556.3999999999996,6636.6000000000004,6583.8999999999996,6666,7257,6235.1000000000004,7257,7481.1999999999998,6415.8000000000002],"text":["IDADE: 30<br />SALARIO: 4279.5","IDADE: 32<br />SALARIO: 4575.4","IDADE: 33<br />SALARIO: 4735.6","IDADE: 34<br />SALARIO: 4863.1","IDADE: 36<br />SALARIO: 5355.8","IDADE: 37<br />SALARIO: 4567.1","IDADE: 37<br />SALARIO: 4434.6","IDADE: 37<br />SALARIO: 4894.3","IDADE: 38<br />SALARIO: 5476.3","IDADE: 38<br />SALARIO: 5624.7","IDADE: 39<br />SALARIO: 5309.8","IDADE: 39<br />SALARIO: 5324.5","IDADE: 40<br />SALARIO: 4711.0","IDADE: 40<br />SALARIO: 4817.1","IDADE: 40<br />SALARIO: 5883.7","IDADE: 40<br />SALARIO: 5598.6","IDADE: 42<br />SALARIO: 5082.1","IDADE: 43<br />SALARIO: 4607.6","IDADE: 43<br />SALARIO: 4703.8","IDADE: 43<br />SALARIO: 5747.9","IDADE: 44<br />SALARIO: 4715.8","IDADE: 44<br />SALARIO: 4872.7","IDADE: 45<br />SALARIO: 4186.6","IDADE: 45<br />SALARIO: 4540.1","IDADE: 45<br />SALARIO: 4894.3","IDADE: 45<br />SALARIO: 4894.3","IDADE: 45<br />SALARIO: 5815.9","IDADE: 45<br />SALARIO: 6051.3","IDADE: 46<br />SALARIO: 4667.5","IDADE: 46<br />SALARIO: 4817.1","IDADE: 46<br />SALARIO: 5309.8","IDADE: 46<br />SALARIO: 4918.0","IDADE: 46<br />SALARIO: 5316.3","IDADE: 47<br />SALARIO: 4894.3","IDADE: 47<br />SALARIO: 5131.0","IDADE: 47<br />SALARIO: 5905.2","IDADE: 47<br />SALARIO: 6120.1","IDADE: 48<br />SALARIO: 4791.9","IDADE: 48<br />SALARIO: 6235.1","IDADE: 49<br />SALARIO: 5254.4","IDADE: 49<br />SALARIO: 5131.2","IDADE: 50<br />SALARIO: 5087.4","IDADE: 50<br />SALARIO: 5136.9","IDADE: 50<br />SALARIO: 5143.2","IDADE: 50<br />SALARIO: 5905.2","IDADE: 50<br />SALARIO: 6051.3","IDADE: 51<br />SALARIO: 5069.4","IDADE: 51<br />SALARIO: 6235.1","IDADE: 51<br />SALARIO: 5905.2","IDADE: 52<br />SALARIO: 5501.5","IDADE: 52<br />SALARIO: 5905.2","IDADE: 52<br />SALARIO: 6556.4","IDADE: 52<br />SALARIO: 6124.2","IDADE: 53<br />SALARIO: 6197.1","IDADE: 54<br />SALARIO: 6796.9","IDADE: 55<br />SALARIO: 5951.7","IDADE: 55<br />SALARIO: 6087.1","IDADE: 55<br />SALARIO: 5686.5","IDADE: 55<br />SALARIO: 6269.8","IDADE: 56<br />SALARIO: 6583.5","IDADE: 56<br />SALARIO: 6583.9","IDADE: 57<br />SALARIO: 7481.2","IDADE: 58<br />SALARIO: 5660.4","IDADE: 58<br />SALARIO: 6583.9","IDADE: 59<br />SALARIO: 6269.8","IDADE: 60<br />SALARIO: 6415.8","IDADE: 60<br />SALARIO: 6920.5","IDADE: 60<br />SALARIO: 7088.8","IDADE: 62<br />SALARIO: 6920.5","IDADE: 63<br />SALARIO: 7481.2","IDADE: 64<br />SALARIO: 6556.4","IDADE: 65<br />SALARIO: 6636.6","IDADE: 65<br />SALARIO: 6583.9","IDADE: 65<br />SALARIO: 6666.0","IDADE: 65<br />SALARIO: 7257.0","IDADE: 67<br />SALARIO: 6235.1","IDADE: 69<br />SALARIO: 7257.0","IDADE: 70<br />SALARIO: 7481.2","IDADE: 72<br />SALARIO: 6415.8"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,255,1)","opacity":1,"size":9.4488188976377963,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,0,255,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[30,30.531645569620252,31.063291139240505,31.594936708860761,32.12658227848101,32.658227848101262,33.189873417721522,33.721518987341774,34.253164556962027,34.784810126582279,35.316455696202532,35.848101265822784,36.379746835443036,36.911392405063289,37.443037974683541,37.974683544303794,38.506329113924053,39.037974683544306,39.569620253164558,40.101265822784811,40.632911392405063,41.164556962025316,41.696202531645568,42.22784810126582,42.759493670886073,43.291139240506325,43.822784810126578,44.35443037974683,44.886075949367083,45.417721518987342,45.949367088607595,46.481012658227847,47.0126582278481,47.544303797468352,48.075949367088604,48.607594936708864,49.139240506329116,49.670886075949369,50.202531645569621,50.734177215189874,51.265822784810126,51.797468354430379,52.329113924050631,52.860759493670884,53.392405063291136,53.924050632911388,54.455696202531641,54.987341772151893,55.518987341772146,56.050632911392398,56.582278481012651,57.11392405063291,57.645569620253163,58.177215189873415,58.708860759493668,59.24050632911392,59.772151898734172,60.303797468354432,60.835443037974684,61.367088607594937,61.898734177215189,62.430379746835442,62.962025316455694,63.493670886075947,64.025316455696199,64.556962025316452,65.088607594936704,65.620253164556956,66.151898734177209,66.683544303797461,67.215189873417728,67.74683544303798,68.278481012658233,68.810126582278485,69.341772151898738,69.87341772151899,70.405063291139243,70.936708860759495,71.468354430379748,72],"y":[4298.2986000473356,4336.0894799578546,4373.8803598683726,4411.6712397788906,4449.4621196894086,4487.2529995999266,4525.0438795104455,4562.8347594209627,4600.6256393314816,4638.4165192419987,4676.2073991525176,4713.9982790630347,4751.7891589735536,4789.5800388840707,4827.3709187945897,4865.1617987051068,4902.9526786156257,4940.7435585261437,4978.5344384366617,5016.3253183471797,5054.1161982576978,5091.9070781682158,5129.6979580787338,5167.4888379892518,5205.2797178997698,5243.0705978102878,5280.8614777208059,5318.6523576313239,5356.4432375418419,5394.2341174523608,5432.0249973628779,5469.8158772733968,5507.6067571839139,5545.3976370944329,5583.18851700495,5620.9793969154689,5658.7702768259869,5696.5611567365049,5734.3520366470229,5772.142916557541,5809.933796468059,5847.724676378577,5885.515556289095,5923.306436199613,5961.097316110131,5998.888196020649,6036.6790759311671,6074.4699558416851,6112.2608357522031,6150.0517156627211,6187.8425955732391,6225.6334754837571,6263.4243553942761,6301.2152353047932,6339.0061152153121,6376.7969951258292,6414.5878750363481,6452.378754946867,6490.1696348573842,6527.9605147679031,6565.7513946784202,6603.5422745889391,6641.3331544994562,6679.1240344099751,6716.9149143204922,6754.7057942310112,6792.4966741415283,6830.2875540520472,6868.0784339625643,6905.8693138730832,6943.6601937836022,6981.4510736941193,7019.2419536046382,7057.0328335151553,7094.8237134256742,7132.6145933361913,7170.4054732467102,7208.1963531572273,7245.9872330677463,7283.7781129782634],"text":["IDADE: 30.00000<br />SALARIO: 4298.299","IDADE: 30.53165<br />SALARIO: 4336.089","IDADE: 31.06329<br />SALARIO: 4373.880","IDADE: 31.59494<br />SALARIO: 4411.671","IDADE: 32.12658<br />SALARIO: 4449.462","IDADE: 32.65823<br />SALARIO: 4487.253","IDADE: 33.18987<br />SALARIO: 4525.044","IDADE: 33.72152<br />SALARIO: 4562.835","IDADE: 34.25316<br />SALARIO: 4600.626","IDADE: 34.78481<br />SALARIO: 4638.417","IDADE: 35.31646<br />SALARIO: 4676.207","IDADE: 35.84810<br />SALARIO: 4713.998","IDADE: 36.37975<br />SALARIO: 4751.789","IDADE: 36.91139<br />SALARIO: 4789.580","IDADE: 37.44304<br />SALARIO: 4827.371","IDADE: 37.97468<br />SALARIO: 4865.162","IDADE: 38.50633<br />SALARIO: 4902.953","IDADE: 39.03797<br />SALARIO: 4940.744","IDADE: 39.56962<br />SALARIO: 4978.534","IDADE: 40.10127<br />SALARIO: 5016.325","IDADE: 40.63291<br />SALARIO: 5054.116","IDADE: 41.16456<br />SALARIO: 5091.907","IDADE: 41.69620<br />SALARIO: 5129.698","IDADE: 42.22785<br />SALARIO: 5167.489","IDADE: 42.75949<br />SALARIO: 5205.280","IDADE: 43.29114<br />SALARIO: 5243.071","IDADE: 43.82278<br />SALARIO: 5280.861","IDADE: 44.35443<br />SALARIO: 5318.652","IDADE: 44.88608<br />SALARIO: 5356.443","IDADE: 45.41772<br />SALARIO: 5394.234","IDADE: 45.94937<br />SALARIO: 5432.025","IDADE: 46.48101<br />SALARIO: 5469.816","IDADE: 47.01266<br />SALARIO: 5507.607","IDADE: 47.54430<br />SALARIO: 5545.398","IDADE: 48.07595<br />SALARIO: 5583.189","IDADE: 48.60759<br />SALARIO: 5620.979","IDADE: 49.13924<br />SALARIO: 5658.770","IDADE: 49.67089<br />SALARIO: 5696.561","IDADE: 50.20253<br />SALARIO: 5734.352","IDADE: 50.73418<br />SALARIO: 5772.143","IDADE: 51.26582<br />SALARIO: 5809.934","IDADE: 51.79747<br />SALARIO: 5847.725","IDADE: 52.32911<br />SALARIO: 5885.516","IDADE: 52.86076<br />SALARIO: 5923.306","IDADE: 53.39241<br />SALARIO: 5961.097","IDADE: 53.92405<br />SALARIO: 5998.888","IDADE: 54.45570<br />SALARIO: 6036.679","IDADE: 54.98734<br />SALARIO: 6074.470","IDADE: 55.51899<br />SALARIO: 6112.261","IDADE: 56.05063<br />SALARIO: 6150.052","IDADE: 56.58228<br />SALARIO: 6187.843","IDADE: 57.11392<br />SALARIO: 6225.633","IDADE: 57.64557<br />SALARIO: 6263.424","IDADE: 58.17722<br />SALARIO: 6301.215","IDADE: 58.70886<br />SALARIO: 6339.006","IDADE: 59.24051<br />SALARIO: 6376.797","IDADE: 59.77215<br />SALARIO: 6414.588","IDADE: 60.30380<br />SALARIO: 6452.379","IDADE: 60.83544<br />SALARIO: 6490.170","IDADE: 61.36709<br />SALARIO: 6527.961","IDADE: 61.89873<br />SALARIO: 6565.751","IDADE: 62.43038<br />SALARIO: 6603.542","IDADE: 62.96203<br />SALARIO: 6641.333","IDADE: 63.49367<br />SALARIO: 6679.124","IDADE: 64.02532<br />SALARIO: 6716.915","IDADE: 64.55696<br />SALARIO: 6754.706","IDADE: 65.08861<br />SALARIO: 6792.497","IDADE: 65.62025<br />SALARIO: 6830.288","IDADE: 66.15190<br />SALARIO: 6868.078","IDADE: 66.68354<br />SALARIO: 6905.869","IDADE: 67.21519<br />SALARIO: 6943.660","IDADE: 67.74684<br />SALARIO: 6981.451","IDADE: 68.27848<br />SALARIO: 7019.242","IDADE: 68.81013<br />SALARIO: 7057.033","IDADE: 69.34177<br />SALARIO: 7094.824","IDADE: 69.87342<br />SALARIO: 7132.615","IDADE: 70.40506<br />SALARIO: 7170.405","IDADE: 70.93671<br />SALARIO: 7208.196","IDADE: 71.46835<br />SALARIO: 7245.987","IDADE: 72.00000<br />SALARIO: 7283.778"],"type":"scatter","mode":"lines","name":"fitted values","line":{"width":3.7795275590551185,"color":"rgba(51,102,255,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[30,30.531645569620252,31.063291139240505,31.594936708860761,32.12658227848101,32.658227848101262,33.189873417721522,33.721518987341774,34.253164556962027,34.784810126582279,35.316455696202532,35.848101265822784,36.379746835443036,36.911392405063289,37.443037974683541,37.974683544303794,38.506329113924053,39.037974683544306,39.569620253164558,40.101265822784811,40.632911392405063,41.164556962025316,41.696202531645568,42.22784810126582,42.759493670886073,43.291139240506325,43.822784810126578,44.35443037974683,44.886075949367083,45.417721518987342,45.949367088607595,46.481012658227847,47.0126582278481,47.544303797468352,48.075949367088604,48.607594936708864,49.139240506329116,49.670886075949369,50.202531645569621,50.734177215189874,51.265822784810126,51.797468354430379,52.329113924050631,52.860759493670884,53.392405063291136,53.924050632911388,54.455696202531641,54.987341772151893,55.518987341772146,56.050632911392398,56.582278481012651,57.11392405063291,57.645569620253163,58.177215189873415,58.708860759493668,59.24050632911392,59.772151898734172,60.303797468354432,60.835443037974684,61.367088607594937,61.898734177215189,62.430379746835442,62.962025316455694,63.493670886075947,64.025316455696199,64.556962025316452,65.088607594936704,65.620253164556956,66.151898734177209,66.683544303797461,67.215189873417728,67.74683544303798,68.278481012658233,68.810126582278485,69.341772151898738,69.87341772151899,70.405063291139243,70.936708860759495,71.468354430379748,72,72,72,71.468354430379748,70.936708860759495,70.405063291139243,69.87341772151899,69.341772151898738,68.810126582278485,68.278481012658233,67.74683544303798,67.215189873417728,66.683544303797461,66.151898734177209,65.620253164556956,65.088607594936704,64.556962025316452,64.025316455696199,63.493670886075947,62.962025316455694,62.430379746835442,61.898734177215189,61.367088607594937,60.835443037974684,60.303797468354432,59.772151898734172,59.24050632911392,58.708860759493668,58.177215189873415,57.645569620253163,57.11392405063291,56.582278481012651,56.050632911392398,55.518987341772146,54.987341772151893,54.455696202531641,53.924050632911388,53.392405063291136,52.860759493670884,52.329113924050631,51.797468354430379,51.265822784810126,50.734177215189874,50.202531645569621,49.670886075949369,49.139240506329116,48.607594936708864,48.075949367088604,47.544303797468352,47.0126582278481,46.481012658227847,45.949367088607595,45.417721518987342,44.886075949367083,44.35443037974683,43.822784810126578,43.291139240506325,42.759493670886073,42.22784810126582,41.696202531645568,41.164556962025316,40.632911392405063,40.101265822784811,39.569620253164558,39.037974683544306,38.506329113924053,37.974683544303794,37.443037974683541,36.911392405063289,36.379746835443036,35.848101265822784,35.316455696202532,34.784810126582279,34.253164556962027,33.721518987341774,33.189873417721522,32.658227848101262,32.12658227848101,31.594936708860761,31.063291139240505,30.531645569620252,30,30],"y":[4031.4564221884452,4075.083444978522,4118.6781391913873,4162.2382481499326,4205.7613155890649,4249.2446651723021,4292.685377779726,4336.0802663502573,4379.425848055278,4422.7183135814166,4465.953493311441,4509.1268202178908,4552.2332893306848,4595.2674137147806,4638.223177007605,4681.0939827303264,4723.8726008179801,4766.5511121285717,4809.1208521113422,4851.5723553604175,4893.8953034720817,4936.0784794754063,4978.1097331174888,5019.975962432869,5061.6631182512619,5103.1562394836246,5144.4395279876371,5185.4964722799368,5226.3100289819222,5266.862869251825,5307.1376941735598,5347.1176178753349,5386.7866100543779,5426.1299810548899,5465.1348837122559,5503.7907984012782,5542.0899629700934,5580.0277092075894,5617.6026731536203,5654.8168576834369,5691.6755407840674,5728.1870391441644,5764.3623511089318,5800.2147132165346,5835.7591090855594,5871.011768384431,5905.989688138804,5940.7102004974122,5975.1906021139257,6009.447851984587,6043.4983378264824,6077.3577062583709,6111.040749104186,6144.5613367760889,6177.9323895050493,6211.1658777722241,6244.2728443165142,6277.2634412987827,6310.1469774202951,6342.9319709184983,6375.6262053451128,6408.2367858522002,6440.7701943746079,6473.2323426177563,6505.6286221580376,6537.9639512607873,6570.2428182375752,6602.4693213183682,6634.6472051192641,6666.7798938554561,6698.8705214910142,6730.9219590396842,6762.9368392396836,6794.9175788247703,6826.8663986069641,6858.7853415752143,6890.6762892011857,6922.5409761288074,6954.3810034096723,6986.1978504318004,6986.1978504318004,7581.3583755247264,7537.5934627258202,7493.8517301856473,7450.1346572922348,7406.4438450971684,7362.7810282443843,7319.1480882055403,7275.5470679695927,7231.9801883485543,7188.4498660761901,7144.9587338907104,7101.5096628058645,7058.1057867857262,7014.7505300454814,6971.447637201235,6928.2012064829469,6885.0157262021939,6841.8961146243046,6798.847763325678,6755.8765840117276,6712.9890586173078,6670.1922922944732,6627.4940685949514,6584.902905756182,6542.4281124794343,6500.0798409255749,6457.8691338334975,6415.8079616843661,6373.9092447091434,6332.1868533199959,6290.6555793408552,6249.3310693904805,6208.229711185958,6167.3684637235301,6126.7646236568671,6086.4355231347026,6046.3981591826914,6006.6687614692582,5967.2623136129896,5928.1920521520506,5889.468975431645,5851.1014001404255,5813.0946042654205,5775.4505906818804,5738.1679954296596,5701.242150297644,5664.6652931339759,5628.42690431345,5592.5141366714588,5556.912300552196,5521.6053656528966,5486.5764461017616,5451.8082429827109,5417.2834274539746,5382.984956136951,5348.8963175482777,5315.0017135456346,5281.2861830399788,5247.7356768610252,5214.3370930433139,5181.078281333942,5147.9480247619813,5114.9360049237157,5082.0327564132713,5049.2296146798872,5016.5186605815743,4983.8926640533609,4951.3450286164225,4918.8697379081786,4886.4613049935942,4854.1147249025807,4821.8254306076851,4789.589252491668,4757.4023812411651,4725.2613340275511,4693.1629237897523,4661.1042314078486,4629.0825805453578,4597.0955149371866,4565.1407779062265,4031.4564221884452],"text":["IDADE: 30.00000<br />SALARIO: 4298.299","IDADE: 30.53165<br />SALARIO: 4336.089","IDADE: 31.06329<br />SALARIO: 4373.880","IDADE: 31.59494<br />SALARIO: 4411.671","IDADE: 32.12658<br />SALARIO: 4449.462","IDADE: 32.65823<br />SALARIO: 4487.253","IDADE: 33.18987<br />SALARIO: 4525.044","IDADE: 33.72152<br />SALARIO: 4562.835","IDADE: 34.25316<br />SALARIO: 4600.626","IDADE: 34.78481<br />SALARIO: 4638.417","IDADE: 35.31646<br />SALARIO: 4676.207","IDADE: 35.84810<br />SALARIO: 4713.998","IDADE: 36.37975<br />SALARIO: 4751.789","IDADE: 36.91139<br />SALARIO: 4789.580","IDADE: 37.44304<br />SALARIO: 4827.371","IDADE: 37.97468<br />SALARIO: 4865.162","IDADE: 38.50633<br />SALARIO: 4902.953","IDADE: 39.03797<br />SALARIO: 4940.744","IDADE: 39.56962<br />SALARIO: 4978.534","IDADE: 40.10127<br />SALARIO: 5016.325","IDADE: 40.63291<br />SALARIO: 5054.116","IDADE: 41.16456<br />SALARIO: 5091.907","IDADE: 41.69620<br />SALARIO: 5129.698","IDADE: 42.22785<br />SALARIO: 5167.489","IDADE: 42.75949<br />SALARIO: 5205.280","IDADE: 43.29114<br />SALARIO: 5243.071","IDADE: 43.82278<br />SALARIO: 5280.861","IDADE: 44.35443<br />SALARIO: 5318.652","IDADE: 44.88608<br />SALARIO: 5356.443","IDADE: 45.41772<br />SALARIO: 5394.234","IDADE: 45.94937<br />SALARIO: 5432.025","IDADE: 46.48101<br />SALARIO: 5469.816","IDADE: 47.01266<br />SALARIO: 5507.607","IDADE: 47.54430<br />SALARIO: 5545.398","IDADE: 48.07595<br />SALARIO: 5583.189","IDADE: 48.60759<br />SALARIO: 5620.979","IDADE: 49.13924<br />SALARIO: 5658.770","IDADE: 49.67089<br />SALARIO: 5696.561","IDADE: 50.20253<br />SALARIO: 5734.352","IDADE: 50.73418<br />SALARIO: 5772.143","IDADE: 51.26582<br />SALARIO: 5809.934","IDADE: 51.79747<br />SALARIO: 5847.725","IDADE: 52.32911<br />SALARIO: 5885.516","IDADE: 52.86076<br />SALARIO: 5923.306","IDADE: 53.39241<br />SALARIO: 5961.097","IDADE: 53.92405<br />SALARIO: 5998.888","IDADE: 54.45570<br />SALARIO: 6036.679","IDADE: 54.98734<br />SALARIO: 6074.470","IDADE: 55.51899<br />SALARIO: 6112.261","IDADE: 56.05063<br />SALARIO: 6150.052","IDADE: 56.58228<br />SALARIO: 6187.843","IDADE: 57.11392<br />SALARIO: 6225.633","IDADE: 57.64557<br />SALARIO: 6263.424","IDADE: 58.17722<br />SALARIO: 6301.215","IDADE: 58.70886<br />SALARIO: 6339.006","IDADE: 59.24051<br />SALARIO: 6376.797","IDADE: 59.77215<br />SALARIO: 6414.588","IDADE: 60.30380<br />SALARIO: 6452.379","IDADE: 60.83544<br />SALARIO: 6490.170","IDADE: 61.36709<br />SALARIO: 6527.961","IDADE: 61.89873<br />SALARIO: 6565.751","IDADE: 62.43038<br />SALARIO: 6603.542","IDADE: 62.96203<br />SALARIO: 6641.333","IDADE: 63.49367<br />SALARIO: 6679.124","IDADE: 64.02532<br />SALARIO: 6716.915","IDADE: 64.55696<br />SALARIO: 6754.706","IDADE: 65.08861<br />SALARIO: 6792.497","IDADE: 65.62025<br />SALARIO: 6830.288","IDADE: 66.15190<br />SALARIO: 6868.078","IDADE: 66.68354<br />SALARIO: 6905.869","IDADE: 67.21519<br />SALARIO: 6943.660","IDADE: 67.74684<br />SALARIO: 6981.451","IDADE: 68.27848<br />SALARIO: 7019.242","IDADE: 68.81013<br />SALARIO: 7057.033","IDADE: 69.34177<br />SALARIO: 7094.824","IDADE: 69.87342<br />SALARIO: 7132.615","IDADE: 70.40506<br />SALARIO: 7170.405","IDADE: 70.93671<br />SALARIO: 7208.196","IDADE: 71.46835<br />SALARIO: 7245.987","IDADE: 72.00000<br />SALARIO: 7283.778","IDADE: 72.00000<br />SALARIO: 7283.778","IDADE: 72.00000<br />SALARIO: 7283.778","IDADE: 71.46835<br />SALARIO: 7245.987","IDADE: 70.93671<br />SALARIO: 7208.196","IDADE: 70.40506<br />SALARIO: 7170.405","IDADE: 69.87342<br />SALARIO: 7132.615","IDADE: 69.34177<br />SALARIO: 7094.824","IDADE: 68.81013<br />SALARIO: 7057.033","IDADE: 68.27848<br />SALARIO: 7019.242","IDADE: 67.74684<br />SALARIO: 6981.451","IDADE: 67.21519<br />SALARIO: 6943.660","IDADE: 66.68354<br />SALARIO: 6905.869","IDADE: 66.15190<br />SALARIO: 6868.078","IDADE: 65.62025<br />SALARIO: 6830.288","IDADE: 65.08861<br />SALARIO: 6792.497","IDADE: 64.55696<br />SALARIO: 6754.706","IDADE: 64.02532<br />SALARIO: 6716.915","IDADE: 63.49367<br />SALARIO: 6679.124","IDADE: 62.96203<br />SALARIO: 6641.333","IDADE: 62.43038<br />SALARIO: 6603.542","IDADE: 61.89873<br />SALARIO: 6565.751","IDADE: 61.36709<br />SALARIO: 6527.961","IDADE: 60.83544<br />SALARIO: 6490.170","IDADE: 60.30380<br />SALARIO: 6452.379","IDADE: 59.77215<br />SALARIO: 6414.588","IDADE: 59.24051<br />SALARIO: 6376.797","IDADE: 58.70886<br />SALARIO: 6339.006","IDADE: 58.17722<br />SALARIO: 6301.215","IDADE: 57.64557<br />SALARIO: 6263.424","IDADE: 57.11392<br />SALARIO: 6225.633","IDADE: 56.58228<br />SALARIO: 6187.843","IDADE: 56.05063<br />SALARIO: 6150.052","IDADE: 55.51899<br />SALARIO: 6112.261","IDADE: 54.98734<br />SALARIO: 6074.470","IDADE: 54.45570<br />SALARIO: 6036.679","IDADE: 53.92405<br />SALARIO: 5998.888","IDADE: 53.39241<br />SALARIO: 5961.097","IDADE: 52.86076<br />SALARIO: 5923.306","IDADE: 52.32911<br />SALARIO: 5885.516","IDADE: 51.79747<br />SALARIO: 5847.725","IDADE: 51.26582<br />SALARIO: 5809.934","IDADE: 50.73418<br />SALARIO: 5772.143","IDADE: 50.20253<br />SALARIO: 5734.352","IDADE: 49.67089<br />SALARIO: 5696.561","IDADE: 49.13924<br />SALARIO: 5658.770","IDADE: 48.60759<br />SALARIO: 5620.979","IDADE: 48.07595<br />SALARIO: 5583.189","IDADE: 47.54430<br />SALARIO: 5545.398","IDADE: 47.01266<br />SALARIO: 5507.607","IDADE: 46.48101<br />SALARIO: 5469.816","IDADE: 45.94937<br />SALARIO: 5432.025","IDADE: 45.41772<br />SALARIO: 5394.234","IDADE: 44.88608<br />SALARIO: 5356.443","IDADE: 44.35443<br />SALARIO: 5318.652","IDADE: 43.82278<br />SALARIO: 5280.861","IDADE: 43.29114<br />SALARIO: 5243.071","IDADE: 42.75949<br />SALARIO: 5205.280","IDADE: 42.22785<br />SALARIO: 5167.489","IDADE: 41.69620<br />SALARIO: 5129.698","IDADE: 41.16456<br />SALARIO: 5091.907","IDADE: 40.63291<br />SALARIO: 5054.116","IDADE: 40.10127<br />SALARIO: 5016.325","IDADE: 39.56962<br />SALARIO: 4978.534","IDADE: 39.03797<br />SALARIO: 4940.744","IDADE: 38.50633<br />SALARIO: 4902.953","IDADE: 37.97468<br />SALARIO: 4865.162","IDADE: 37.44304<br />SALARIO: 4827.371","IDADE: 36.91139<br />SALARIO: 4789.580","IDADE: 36.37975<br />SALARIO: 4751.789","IDADE: 35.84810<br />SALARIO: 4713.998","IDADE: 35.31646<br />SALARIO: 4676.207","IDADE: 34.78481<br />SALARIO: 4638.417","IDADE: 34.25316<br />SALARIO: 4600.626","IDADE: 33.72152<br />SALARIO: 4562.835","IDADE: 33.18987<br />SALARIO: 4525.044","IDADE: 32.65823<br />SALARIO: 4487.253","IDADE: 32.12658<br />SALARIO: 4449.462","IDADE: 31.59494<br />SALARIO: 4411.671","IDADE: 31.06329<br />SALARIO: 4373.880","IDADE: 30.53165<br />SALARIO: 4336.089","IDADE: 30.00000<br />SALARIO: 4298.299","IDADE: 30.00000<br />SALARIO: 4298.299"],"type":"scatter","mode":"lines","line":{"width":3.7795275590551185,"color":"transparent","dash":"solid"},"fill":"toself","fillcolor":"rgba(153,153,153,0.4)","hoveron":"points","hoverinfo":"x+y","showlegend":false,"xaxis":"x","yaxis":"y","frame":null}],"layout":{"margin":{"t":43.762557077625573,"r":7.3059360730593621,"b":40.182648401826491,"l":48.949771689497723},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"Diagrama de Dispersão sem Outliers","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[27.899999999999999,74.099999999999994],"tickmode":"array","ticktext":["30","40","50","60","70"],"tickvals":[30,40,50,60,70],"categoryorder":"array","categoryarray":["30","40","50","60","70"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"IDADE","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[3853.961324521631,7758.8534731915406],"tickmode":"array","ticktext":["4000","5000","6000","7000"],"tickvals":[4000,5000,6000,7000],"categoryorder":"array","categoryarray":["4000","5000","6000","7000"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"SALÁRIO","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"4ec1f76395b":{"x":{},"y":{},"type":"scatter"},"4ec3d532063":{"x":{},"y":{}}},"cur_data":"4ec1f76395b","visdat":{"4ec1f76395b":["function (y) ","x"],"4ec3d532063":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(mercado2,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">editable =</span> <span class="st">'cell'</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">caption =</span> <span class="st">'Tabela 1. Base de Dados sobre Servicos'</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">colnames =</span> <span class="fu">c</span>(<span class="st">"ID"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Educação"</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Cargo"</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Via"</span>,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Idade"</span>,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Tempo"</span>,</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Remuneração"</span>),</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">filter =</span> <span class="st">"top"</span>, </span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">plugins=</span><span class="st">'natural'</span>,</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">extensions=</span><span class="st">'Buttons'</span>,</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">options=</span><span class="fu">list</span>(<span class="at">dom=</span><span class="st">'Blfrtip'</span>,</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>            <span class="at">buttons=</span><span class="fu">c</span>(<span class="st">'csv'</span>,<span class="st">'excel'</span>,<span class="st">'pdf'</span>),</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>                  <span class="at">engthMenu=</span><span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">250</span>,<span class="sc">-</span><span class="dv">1</span>)), <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">250</span>,<span class="st">"All"</span>),</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>                         <span class="at">pageLength =</span> <span class="dv">5</span>, </span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>                         <span class="at">autoWidth =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>                         <span class="at">scrollX =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>          )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item" id="htmlwidget-d97b48048a2bc45c8761" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-d97b48048a2bc45c8761">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"30\" data-max=\"72\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"25\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"4186.6\" data-max=\"7481.2\" data-scale=\"1\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["Buttons"],"caption":"<caption>Tabela 1. Base de Dados sobre Servicos<\/caption>","editable":{"target":"cell","disable":{"columns":null},"numeric":[5,6,7],"date":[]},"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79"],["SI_01","SI_02","SI_03","SI_04","SI_05","SI_06","SI_07","SI_08","SI_09","SI_10","SI_11","SI_12","SI_13","SI_14","SI_15","SI_16","SI_17","SI_18","SI_19","SI_20","SI_21","SI_22","SI_23","SI_24","SI_25","SI_26","SI_27","SI_28","SI_29","SI_30","SI_31","SI_32","SI_33","SI_34","SI_35","SI_36","SI_37","SI_38","SI_39","SI_40","SI_41","SI_42","SI_43","SI_44","SI_45","SI_46","SI_47","SI_48","SI_49","SI_50","SI_51","SI_52","SI_53","SI_54","SI_55","SI_56","SI_57","SI_58","SI_59","SI_60","SI_61","SI_62","SI_63","SI_64","SI_65","SI_66","SI_67","SI_68","SI_70","SI_71","SI_72","SI_73","SI_74","SI_75","SI_76","SI_77","SI_78","SI_79","SI_80"],["SECUNDÁRIO","SUPERIOR","SECUNDÁRIO","SUPERIOR","SECUNDÁRIO","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SECUNDÁRIO","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SECUNDÁRIO","SUPERIOR","SECUNDÁRIO","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SECUNDÁRIO","SUPERIOR","SECUNDÁRIO","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SECUNDÁRIO","SUPERIOR","SECUNDÁRIO","SUPERIOR","SUPERIOR","SECUNDÁRIO","SUPERIOR","SUPERIOR","SECUNDÁRIO","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SECUNDÁRIO","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SECUNDÁRIO","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SECUNDÁRIO","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR","SUPERIOR"],["GERENTE","AUXILIAR","AUXILIAR","GERENTE","GERENTE","AUXILIAR","AUXILIAR","AUXILIAR","AUXILIAR","GERENTE","AUXILIAR","GERENTE","GERENTE","AUXILIAR","AUXILIAR","GERENTE","GERENTE","GERENTE","AUXILIAR","AUXILIAR","AUXILIAR","GERENTE","AUXILIAR","AUXILIAR","GERENTE","AUXILIAR","AUXILIAR","GERENTE","GERENTE","AUXILIAR","GERENTE","GERENTE","AUXILIAR","GERENTE","GERENTE","AUXILIAR","DIRETOR","AUXILIAR","AUXILIAR","AUXILIAR","AUXILIAR","AUXILIAR","GERENTE","AUXILIAR","GERENTE","GERENTE","AUXILIAR","AUXILIAR","GERENTE","AUXILIAR","GERENTE","GERENTE","DIRETOR","AUXILIAR","GERENTE","GERENTE","GERENTE","GERENTE","DIRETOR","AUXILIAR","AUXILIAR","AUXILIAR","AUXILIAR","DIRETOR","DIRETOR","DIRETOR","GERENTE","DIRETOR","DIRETOR","DIRETOR","AUXILIAR","GERENTE","AUXILIAR","DIRETOR","GERENTE","AUXILIAR","DIRETOR","DIRETOR","AUXILIAR"],["INTERIOR","INTERIOR","CAPITAL","INTERIOR","INTERIOR","INTERIOR","CAPITAL","INTERIOR","INTERIOR","CAPITAL","INTERIOR","INTERIOR","CAPITAL","CAPITAL","INTERIOR","CAPITAL","INTERIOR","INTERIOR","INTERIOR","INTERIOR","CAPITAL","CAPITAL","INTERIOR","INTERIOR","INTERIOR","INTERIOR","INTERIOR","CAPITAL","CAPITAL","CAPITAL","INTERIOR","CAPITAL","CAPITAL","INTERIOR","CAPITAL","CAPITAL","CAPITAL","INTERIOR","INTERIOR","INTERIOR","CAPITAL","INTERIOR","INTERIOR","INTERIOR","CAPITAL","CAPITAL","CAPITAL","INTERIOR","CAPITAL","CAPITAL","CAPITAL","INTERIOR","CAPITAL","CAPITAL","INTERIOR","INTERIOR","INTERIOR","CAPITAL","CAPITAL","CAPITAL","CAPITAL","CAPITAL","CAPITAL","CAPITAL","CAPITAL","CAPITAL","CAPITAL","CAPITAL","CAPITAL","CAPITAL","INTERIOR","INTERIOR","CAPITAL","CAPITAL","CAPITAL","INTERIOR","CAPITAL","CAPITAL","CAPITAL"],[30,32,33,34,36,37,37,37,38,38,39,39,40,40,40,40,42,43,43,43,44,44,45,45,45,45,45,45,46,46,46,46,46,47,47,47,47,48,48,49,49,50,50,50,50,50,51,51,51,52,52,52,52,53,54,55,55,55,55,56,56,57,58,58,59,60,60,60,62,63,64,65,65,65,65,67,69,70,72],[1,4,2,3,1,1,0,6,13,8,5,0,3,10,11,0,5,2,2,13,6,1,3,3,2,2,15,15,1,10,6,5,16,2,3,19,3,4,15,6,15,6,4,8,6,17,6,16,15,19,6,12,16,18,19,17,13,19,13,22,25,19,16,17,16,14,21,17,16,22,18,16,22,15,25,15,21,22,22],[4279.5,4575.4,4735.6,4863.1,5355.8,4567.1,4434.6,4894.3,5476.3,5624.7,5309.8,5324.5,4711,4817.1,5883.7,5598.6,5082.1,4607.6,4703.8,5747.9,4715.8,4872.7,4186.6,4540.1,4894.3,4894.3,5815.9,6051.3,4667.5,4817.1,5309.8,4918,5316.3,4894.3,5131,5905.2,6120.1,4791.9,6235.1,5254.4,5131.2,5087.4,5136.9,5143.2,5905.2,6051.3,5069.4,6235.1,5905.2,5501.5,5905.2,6556.4,6124.2,6197.1,6796.9,5951.7,6087.1,5686.5,6269.8,6583.5,6583.9,7481.2,5660.4,6583.9,6269.8,6415.8,6920.5,7088.8,6920.5,7481.2,6556.4,6636.6,6583.9,6666,7257,6235.1,7257,7481.2,6415.8]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>ID<\/th>\n      <th>Educação<\/th>\n      <th>Cargo<\/th>\n      <th>Via<\/th>\n      <th>Idade<\/th>\n      <th>Tempo<\/th>\n      <th>Remuneração<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Blfrtip","buttons":["csv","excel","pdf"],"engthMenu":[[5,50,100,250,-1]],"pageLength":5,"autoWidth":true,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[5,6,7]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"ID","targets":1},{"name":"EDUCAÇÃO","targets":2},{"name":"CARGO","targets":3},{"name":"LOCAL","targets":4},{"name":"IDADE","targets":5},{"name":"TEMPOCASA","targets":6},{"name":"SALARIO","targets":7}],"order":[],"orderClasses":false,"orderCellsTop":true,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpmisc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Carregando pacotes exigidos: ggpp</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Registered S3 methods overwritten by 'ggpp':
+  method                  from   
+  heightDetails.titleGrob ggplot2
+  widthDetails.titleGrob  ggplot2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Anexando pacote: 'ggpp'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>O seguinte objeto é mascarado por 'package:ggplot2':
+
+    annotate</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mercado2 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">'mercado2.xlsx'</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>grafico2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mercado2, <span class="fu">aes</span>(<span class="at">x =</span> TEMPOCASA, </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">y =</span> SALARIO))<span class="sc">+</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a> <span class="fu">stat_poly_eq</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(..eq.label.., ..rr.label.., </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                                <span class="at">sep =</span> <span class="st">"~~~"</span>)), </span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">formula =</span> y <span class="sc">~</span> x, </span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">parse =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">color =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="base-de-dados-.csv" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="base-de-dados-.csv"><span class="header-section-number">2.2.2</span> Base de Dados .csv</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Dados Separados por Ponto e Vírgula (;)</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>Vendas_A <span class="ot">=</span> <span class="fu">read.csv2</span>(<span class="st">"vendas.csv"</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Dados separados por Vírgula (,)</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>Vendas_B <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"vendas1.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Anexando pacote: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Os seguintes objetos são mascarados por 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Os seguintes objetos são mascarados por 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>Vendas_A <span class="sc">%&gt;%</span> </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(filial, valor_compra, n_itens) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(filial <span class="sc">==</span> <span class="st">"B"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(valor_compra) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">VM =</span> valor_compra<span class="sc">/</span>n_itens) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(VM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   filial valor_compra n_itens        VM
+1       B        30.50      20   1.52500
+2       B        61.69      31   1.99000
+3       B       220.00     100   2.20000
+4       B        93.20      40   2.33000
+5       B        70.00      14   5.00000
+6       B        97.50      13   7.50000
+7       B       271.26      22  12.33000
+8       B       247.67      17  14.56882
+9       B       500.80      30  16.69333
+10      B       856.00      20  42.80000
+11      B        99.00       1  99.00000
+12      B       500.00       2 250.00000</code></pre>
+</div>
+</div>
+<div class="progress">
+<div class="progress-bar" style="width: 100%;">
+
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="analise-exploratoria-de-dados" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Analise Exploratoria de Dados</h1>
+<table class="table">
+<caption>Ecosistema Tidyverse</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Dplyr</th>
+<th style="text-align: center;">ggplot2</th>
+<th style="text-align: center;">Shiny</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><a href="https://dplyr.tidyverse.org/"><img src="www/dplyr.png" class="img-fluid" width="240" alt="Pacote Dplyr"></a></td>
+<td style="text-align: center;"><img src="www/ggplo2.png" class="img-fluid"></td>
+<td style="text-align: center;"><img src="www/Shiny.png" class="img-fluid" width="240"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="fórmulas-em-latex" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Fórmulas em Latex</h1>
+<p><span class="math display">\[  Y_{1} = \alpha_{1} + \beta_{1}X_{1} + \beta_{2}X_{2} + \beta_{3}X_{3} + \epsilon_{i}   \]</span></p>
 <div class="progress">
 <div class="progress-bar" style="width: 100%;">
 
@@ -222,7 +501,6 @@ body{text-align: justify}
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
